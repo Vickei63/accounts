@@ -1,7 +1,17 @@
 
 
 <?php
-    include("connect.php");
+    
+    //SIGNUP
+        //1. INSERT DATA
+        //2. ENTER THE DATABASE(QUERID)
+        //3. DATA SHOULD NOT BE INSERTED 2 TIMES
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        include "connect.php";
+
+        
+
+    }
 
 
 ?>
