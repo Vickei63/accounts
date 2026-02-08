@@ -28,27 +28,30 @@
         // }
         
         $sql = "select * from users where username = '$username'";
-        $results = mysqli_query($conn,$sql);
+        $result = mysqli_query($conn,$sql);
 
-        if($results){
-            $num = mysqli_num_rows($results);
-             if($num > 0){
-                echo "User already exists";
-                $user = 1;
-             }
-        }
-        else{
-            
-            $sql = "INSERT INTO `users` (username, password) 
-                VALUES (NULL, '$username', '$password') ";
-            $results = mysqli_query($conn,$sql);
-
-            if($results){
-                echo "Data inserted successfully !";
+         if($result){
+            $num = mysqli_num_rows($result);
+            if($num >0){
+                //echo "User already exist";
+                $user =1;
             }
             else{
-                echo "data not inserted";
+                $sql = "insert into `users`(username,password)
+                    values('$username','$password')";
+               $result = mysqli_query( $conn,$sql);
+
+               if($result){
+                    //echo "Signup Successful";
+                    $success =1;
+                    header("location: home.php");
+                }
+                else{
+                    die(mysqli_error($conn));
+                }
             }
+
+            
         }
     }
 
